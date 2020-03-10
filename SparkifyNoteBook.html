@@ -13090,9 +13090,12 @@ div#notebook {
 <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">VectorAssembler</span><span class="p">,</span><span class="n">Normalizer</span><span class="p">,</span><span class="n">StandardScaler</span><span class="p">,</span><span class="n">IDF</span><span class="p">,</span><span class="n">StringIndexer</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.regression</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.classification</span> <span class="kn">import</span> <span class="n">LogisticRegression</span><span class="p">,</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">from</span> <span class="nn">pyspark.ml.evaluation</span> <span class="kn">import</span> <span class="n">BinaryClassificationEvaluator</span> 
+<span class="kn">from</span> <span class="nn">pyspark.ml.evaluation</span> <span class="kn">import</span> <span class="n">BinaryClassificationEvaluator</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.tuning</span> <span class="kn">import</span> <span class="n">ParamGridBuilder</span><span class="p">,</span> <span class="n">CrossValidator</span>
+<span class="c1"># from matplotlib import pyplot as plt</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
 
     </div>
@@ -13113,13 +13116,13 @@ div#notebook {
 
  
  
-<div id="86c3209d-2294-4d15-bfd0-a6aa3e87f262"></div>
+<div id="10d61be3-c96b-4bb3-8986-58bfd190a19c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#86c3209d-2294-4d15-bfd0-a6aa3e87f262');
+var element = $('#10d61be3-c96b-4bb3-8986-58bfd190a19c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "611704c8976c48e8a148b3447de77a15", "version_major": 2, "version_minor": 0}
+{"model_id": "89f2436d6e604843b270c36e96dc53a7", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13144,7 +13147,7 @@ var element = $('#86c3209d-2294-4d15-bfd0-a6aa3e87f262');
 
 <div class="output_html rendered_html output_subarea ">
 <table>
-<tr><th>ID</th><th>YARN Application ID</th><th>Kind</th><th>State</th><th>Spark UI</th><th>Driver log</th><th>Current session?</th></tr><tr><td>0</td><td>application_1582471225556_0001</td><td>pyspark</td><td>idle</td><td><a target="_blank" href="http://ip-172-31-5-201.us-east-2.compute.internal:20888/proxy/application_1582471225556_0001/">Link</a></td><td><a target="_blank" href="http://ip-172-31-15-139.us-east-2.compute.internal:8042/node/containerlogs/container_1582471225556_0001_01_000001/livy">Link</a></td><td>✔</td></tr></table>
+<tr><th>ID</th><th>YARN Application ID</th><th>Kind</th><th>State</th><th>Spark UI</th><th>Driver log</th><th>Current session?</th></tr><tr><td>0</td><td>application_1583729079315_0001</td><td>pyspark</td><td>idle</td><td><a target="_blank" href="http://ip-172-31-9-152.us-east-2.compute.internal:20888/proxy/application_1583729079315_0001/">Link</a></td><td><a target="_blank" href="http://ip-172-31-3-198.us-east-2.compute.internal:8042/node/containerlogs/container_1583729079315_0001_01_000001/livy">Link</a></td><td>✔</td></tr></table>
 </div>
 
 </div>
@@ -13159,10 +13162,10 @@ var element = $('#86c3209d-2294-4d15-bfd0-a6aa3e87f262');
 
  
  
-<div id="f8ed8ce0-e28c-47a7-a439-f38044eef6a8"></div>
+<div id="2fc522ff-65d9-42e8-94dc-e85b2b7f4122"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#f8ed8ce0-e28c-47a7-a439-f38044eef6a8');
+var element = $('#2fc522ff-65d9-42e8-94dc-e85b2b7f4122');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -13192,10 +13195,10 @@ var element = $('#f8ed8ce0-e28c-47a7-a439-f38044eef6a8');
 
  
  
-<div id="63a5b61d-09b3-4608-8e8a-893b1092dc7a"></div>
+<div id="fc5c2ceb-f837-466f-89a2-bede808f1379"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#63a5b61d-09b3-4608-8e8a-893b1092dc7a');
+var element = $('#fc5c2ceb-f837-466f-89a2-bede808f1379');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -13235,13 +13238,13 @@ var element = $('#63a5b61d-09b3-4608-8e8a-893b1092dc7a');
 
  
  
-<div id="4b29898e-b378-4c89-a4f1-3797859ae387"></div>
+<div id="1edea223-f8ca-4514-aa05-56c376f01c18"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#4b29898e-b378-4c89-a4f1-3797859ae387');
+var element = $('#1edea223-f8ca-4514-aa05-56c376f01c18');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "", "version_major": 2, "version_minor": 0}
+{"model_id": "bd67f2e7da4e43e2b0e95a5aa2a902af", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13257,10 +13260,10 @@ var element = $('#4b29898e-b378-4c89-a4f1-3797859ae387');
 
  
  
-<div id="f3458b49-9795-4eef-b2e0-cf4a12b839ba"></div>
+<div id="01bd7414-fa98-45f7-b512-ad0953cf48ce"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#f3458b49-9795-4eef-b2e0-cf4a12b839ba');
+var element = $('#01bd7414-fa98-45f7-b512-ad0953cf48ce');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -13307,13 +13310,13 @@ var element = $('#f3458b49-9795-4eef-b2e0-cf4a12b839ba');
 
  
  
-<div id="a8f00d0b-23aa-4e9e-9168-5ca572b6899e"></div>
+<div id="82505354-16fb-41df-bf36-eefa7b635156"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a8f00d0b-23aa-4e9e-9168-5ca572b6899e');
+var element = $('#82505354-16fb-41df-bf36-eefa7b635156');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "42bf692243f0419594e6e083cad944a8", "version_major": 2, "version_minor": 0}
+{"model_id": "55c8cc62d81f405da229dd3b60baeec9", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13329,10 +13332,10 @@ var element = $('#a8f00d0b-23aa-4e9e-9168-5ca572b6899e');
 
  
  
-<div id="2baf9475-e571-40ac-b038-cfacbbcb7482"></div>
+<div id="2fc6196a-af4b-432f-b4ff-989a8f3c45d3"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#2baf9475-e571-40ac-b038-cfacbbcb7482');
+var element = $('#2fc6196a-af4b-432f-b4ff-989a8f3c45d3');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -13347,7 +13350,7 @@ var element = $('#2baf9475-e571-40ac-b038-cfacbbcb7482');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># check detail for data</span>
@@ -13375,13 +13378,13 @@ var element = $('#2baf9475-e571-40ac-b038-cfacbbcb7482');
 
  
  
-<div id="9f57be3d-b716-43eb-b15c-262fd8e09869"></div>
+<div id="782c2118-e51d-4f11-bd3f-f93d8f3406ba"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#9f57be3d-b716-43eb-b15c-262fd8e09869');
+var element = $('#782c2118-e51d-4f11-bd3f-f93d8f3406ba');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "10d4ba8081e74549be7394e5b7e9394f", "version_major": 2, "version_minor": 0}
+{"model_id": "15a71237b45b4e6d9d87250749c41298", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13397,10 +13400,10 @@ var element = $('#9f57be3d-b716-43eb-b15c-262fd8e09869');
 
  
  
-<div id="e5cd4848-591a-4ae8-ab63-e8301f990625"></div>
+<div id="6adf4d0b-dfce-4b07-98a2-a75619daf3a5"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e5cd4848-591a-4ae8-ab63-e8301f990625');
+var element = $('#6adf4d0b-dfce-4b07-98a2-a75619daf3a5');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -13474,7 +13477,7 @@ None</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;any&quot;</span><span class="p">,</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;userId&quot;</span><span class="p">,</span><span class="s2">&quot;sessionId&quot;</span><span class="p">])</span>
@@ -13499,13 +13502,13 @@ None</pre>
 
  
  
-<div id="2af26696-244b-4d76-862f-ddeed0a84bff"></div>
+<div id="a561198e-3e50-4d6c-84c6-80f7f0a3a3c6"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#2af26696-244b-4d76-862f-ddeed0a84bff');
+var element = $('#a561198e-3e50-4d6c-84c6-80f7f0a3a3c6');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "01cd004a670f4443b7fb88f03f100b3a", "version_major": 2, "version_minor": 0}
+{"model_id": "6af3890256fb4d3789f8c0edeb8ae5dc", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13521,10 +13524,10 @@ var element = $('#2af26696-244b-4d76-862f-ddeed0a84bff');
 
  
  
-<div id="6b2f0bee-2695-4a41-a112-12e5f53d0b65"></div>
+<div id="a62c6603-bd3b-4441-b45c-4858dca3b132"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6b2f0bee-2695-4a41-a112-12e5f53d0b65');
+var element = $('#a62c6603-bd3b-4441-b45c-4858dca3b132');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -13549,7 +13552,7 @@ var element = $('#6b2f0bee-2695-4a41-a112-12e5f53d0b65');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="n">churn_func</span> <span class="o">=</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;Cancellation Confirmation&quot;</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;Downgrade&quot;</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">())</span>
@@ -13573,13 +13576,13 @@ var element = $('#6b2f0bee-2695-4a41-a112-12e5f53d0b65');
 
  
  
-<div id="132df592-8b10-4d44-88e0-8807f93d6f83"></div>
+<div id="95eefc9b-6b7b-4c6b-b97b-3911e6fc7ff5"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#132df592-8b10-4d44-88e0-8807f93d6f83');
+var element = $('#95eefc9b-6b7b-4c6b-b97b-3911e6fc7ff5');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "12b0f83004e047b581ce75c2e4f9660b", "version_major": 2, "version_minor": 0}
+{"model_id": "e62fedf6687d44aab84b2d2f845f66c7", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13595,10 +13598,10 @@ var element = $('#132df592-8b10-4d44-88e0-8807f93d6f83');
 
  
  
-<div id="2dcd3902-5617-4a2e-b99b-265aff79f3a5"></div>
+<div id="8f2ff14c-4c62-4b6c-9835-4876616ac686"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#2dcd3902-5617-4a2e-b99b-265aff79f3a5');
+var element = $('#8f2ff14c-4c62-4b6c-9835-4876616ac686');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -13613,7 +13616,7 @@ var element = $('#2dcd3902-5617-4a2e-b99b-265aff79f3a5');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;Churn&quot;</span><span class="p">,</span> <span class="n">churn_func</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">page</span><span class="p">))</span>
@@ -13637,13 +13640,13 @@ var element = $('#2dcd3902-5617-4a2e-b99b-265aff79f3a5');
 
  
  
-<div id="93016988-b9da-4a7f-99d6-9eaad05006ba"></div>
+<div id="511f5034-10a2-4543-b93c-38e4afb2abe1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#93016988-b9da-4a7f-99d6-9eaad05006ba');
+var element = $('#511f5034-10a2-4543-b93c-38e4afb2abe1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "7965b71dd88f49998c2dc9832e50825c", "version_major": 2, "version_minor": 0}
+{"model_id": "5470739f29094f6297fdc7c0197a9022", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13659,10 +13662,10 @@ var element = $('#93016988-b9da-4a7f-99d6-9eaad05006ba');
 
  
  
-<div id="0bc82370-4cfe-4415-955f-5ab6207d9b65"></div>
+<div id="ca33c583-e8ab-4620-8b70-cd143178f7b5"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#0bc82370-4cfe-4415-955f-5ab6207d9b65');
+var element = $('#ca33c583-e8ab-4620-8b70-cd143178f7b5');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -13677,7 +13680,7 @@ var element = $('#0bc82370-4cfe-4415-955f-5ab6207d9b65');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># length visual</span>
@@ -13704,13 +13707,13 @@ var element = $('#0bc82370-4cfe-4415-955f-5ab6207d9b65');
 
  
  
-<div id="df1e1b08-ec41-4661-9cd9-f2312e0e7a05"></div>
+<div id="a242a5f4-f28d-424e-be0f-dacf31b06977"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#df1e1b08-ec41-4661-9cd9-f2312e0e7a05');
+var element = $('#a242a5f4-f28d-424e-be0f-dacf31b06977');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "5aeb621c4f7a4e79951f88a9e11e9e4e", "version_major": 2, "version_minor": 0}
+{"model_id": "0e40d5d7d347470db3fff9c205040523", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13726,10 +13729,10 @@ var element = $('#df1e1b08-ec41-4661-9cd9-f2312e0e7a05');
 
  
  
-<div id="c1e27d85-a007-42f0-873c-abf1f765d1d7"></div>
+<div id="d99f44c7-10d5-4201-92cd-871e2fa6170d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#c1e27d85-a007-42f0-873c-abf1f765d1d7');
+var element = $('#d99f44c7-10d5-4201-92cd-871e2fa6170d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -13744,7 +13747,7 @@ var element = $('#c1e27d85-a007-42f0-873c-abf1f765d1d7');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="n">get_datetime_func</span> <span class="o">=</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">date</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
@@ -13769,13 +13772,13 @@ var element = $('#c1e27d85-a007-42f0-873c-abf1f765d1d7');
 
  
  
-<div id="2a24938c-0928-4224-b2ba-ed7411a3a6a9"></div>
+<div id="602d6be7-01a0-4a92-9e16-98cccf3400d4"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#2a24938c-0928-4224-b2ba-ed7411a3a6a9');
+var element = $('#602d6be7-01a0-4a92-9e16-98cccf3400d4');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "24743f2978ae4f2e9b9ca54727181db6", "version_major": 2, "version_minor": 0}
+{"model_id": "34c76c2c52164fd1af6bcfba76a2d088", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13791,10 +13794,10 @@ var element = $('#2a24938c-0928-4224-b2ba-ed7411a3a6a9');
 
  
  
-<div id="e63cb7aa-d164-475e-853d-4405fc737ea6"></div>
+<div id="111db271-f98d-42cf-b323-af062eab74bc"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e63cb7aa-d164-475e-853d-4405fc737ea6');
+var element = $('#111db271-f98d-42cf-b323-af062eab74bc');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -13809,7 +13812,7 @@ var element = $('#e63cb7aa-d164-475e-853d-4405fc737ea6');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="n">group_dataset</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupBy</span><span class="p">([</span><span class="s2">&quot;userId&quot;</span><span class="p">,</span><span class="s2">&quot;dt&quot;</span><span class="p">,</span><span class="s2">&quot;Churn&quot;</span><span class="p">,</span><span class="s2">&quot;page&quot;</span><span class="p">])</span> \
@@ -13817,7 +13820,7 @@ var element = $('#e63cb7aa-d164-475e-853d-4405fc737ea6');
     <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">&quot;count(page)&quot;</span><span class="p">,</span><span class="s2">&quot;cp&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">orderBy</span><span class="p">([</span><span class="n">desc</span><span class="p">(</span><span class="s2">&quot;userId&quot;</span><span class="p">),</span><span class="n">desc</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">)])</span>
 
-<span class="n">group_dataset</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># group_dataset.show()</span>
 </pre></div>
 
     </div>
@@ -13838,13 +13841,13 @@ var element = $('#e63cb7aa-d164-475e-853d-4405fc737ea6');
 
  
  
-<div id="b124b881-4b41-4e5a-8757-f77a40fbff31"></div>
+<div id="af8d3a31-9600-418e-8207-d455dee35806"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b124b881-4b41-4e5a-8757-f77a40fbff31');
+var element = $('#af8d3a31-9600-418e-8207-d455dee35806');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "042836102f2040e79419af7929b4bc01", "version_major": 2, "version_minor": 0}
+{"model_id": "c37715d8b3a04c8aa4f8b2a02ae8d8e2", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13860,50 +13863,16 @@ var element = $('#b124b881-4b41-4e5a-8757-f77a40fbff31');
 
  
  
-<div id="97098895-8591-4a79-8803-617ce0c44e64"></div>
+<div id="5ff33370-376e-4390-b29b-810e07cc2889"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#97098895-8591-4a79-8803-617ce0c44e64');
+var element = $('#5ff33370-376e-4390-b29b-810e07cc2889');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>+-------+----------+-----+---------------+---+
-| userId|        dt|Churn|           page| cp|
-+-------+----------+-----+---------------+---+
-|1999996|2018-11-27|    0|           Home|  1|
-|1999996|2018-11-27|    0|       NextSong|  5|
-|1999996|2018-11-27|    0|         Logout|  1|
-|1999996|2018-11-27|    0|     Add Friend|  1|
-|1999996|2018-11-27|    0|Add to Playlist|  1|
-|1999996|2018-11-27|    0|      Thumbs Up|  2|
-|1999996|2018-11-13|    0|         Logout|  1|
-|1999996|2018-11-13|    0|    Roll Advert|  1|
-|1999996|2018-11-13|    0|       NextSong|  5|
-|1999996|2018-11-13|    0|           Home|  1|
-|1999996|2018-11-08|    0|      Thumbs Up|  4|
-|1999996|2018-11-08|    0|           Help|  1|
-|1999996|2018-11-08|    0|    Roll Advert|  3|
-|1999996|2018-11-08|    0|Add to Playlist|  2|
-|1999996|2018-11-08|    0|       NextSong| 34|
-|1999996|2018-11-08|    0|           Home|  3|
-|1999996|2018-11-08|    0|       Settings|  1|
-|1999996|2018-11-08|    0|         Logout|  1|
-|1999996|2018-11-08|    0|     Add Friend|  2|
-|1999996|2018-10-30|    0|       NextSong| 25|
-+-------+----------+-----+---------------+---+
-only showing top 20 rows</pre>
-</div>
 </div>
 
 </div>
@@ -13933,7 +13902,7 @@ only showing top 20 rows</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># count songs</span>
@@ -13958,13 +13927,13 @@ only showing top 20 rows</pre>
 
  
  
-<div id="a6d25828-324e-42d3-a807-ea9bb6ef1127"></div>
+<div id="3dc70a2b-a2b1-476f-a0f0-05925a69a5b8"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a6d25828-324e-42d3-a807-ea9bb6ef1127');
+var element = $('#3dc70a2b-a2b1-476f-a0f0-05925a69a5b8');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "510a4b1316b3475cab0e393bca2893c9", "version_major": 2, "version_minor": 0}
+{"model_id": "7ee639a7759243c5bdac17fdb8ec85ed", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13980,10 +13949,10 @@ var element = $('#a6d25828-324e-42d3-a807-ea9bb6ef1127');
 
  
  
-<div id="a3662a52-c7ba-43b2-bccb-f3c1e514fb24"></div>
+<div id="4a64a50c-69a6-41d5-bbb3-6c95fe325a4b"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a3662a52-c7ba-43b2-bccb-f3c1e514fb24');
+var element = $('#4a64a50c-69a6-41d5-bbb3-6c95fe325a4b');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -13998,7 +13967,7 @@ var element = $('#a3662a52-c7ba-43b2-bccb-f3c1e514fb24');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># calc avg listen time</span>
@@ -14023,13 +13992,13 @@ var element = $('#a3662a52-c7ba-43b2-bccb-f3c1e514fb24');
 
  
  
-<div id="f308308a-f930-4c11-b6ef-a881855144ec"></div>
+<div id="2aab98ea-513c-4d81-8a50-313bc2305366"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#f308308a-f930-4c11-b6ef-a881855144ec');
+var element = $('#2aab98ea-513c-4d81-8a50-313bc2305366');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e28c263a1c8f4ae4a6b6c5ffec798409", "version_major": 2, "version_minor": 0}
+{"model_id": "9d965c5ca7964b4eab8f0cef15922a60", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14045,10 +14014,10 @@ var element = $('#f308308a-f930-4c11-b6ef-a881855144ec');
 
  
  
-<div id="3b44bb70-82c7-4050-ba85-50ebad43e27a"></div>
+<div id="3b4f1233-54a0-494d-8a1d-03fb3dc36314"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#3b44bb70-82c7-4050-ba85-50ebad43e27a');
+var element = $('#3b4f1233-54a0-494d-8a1d-03fb3dc36314');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14063,7 +14032,7 @@ var element = $('#3b44bb70-82c7-4050-ba85-50ebad43e27a');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># count all artist for each user</span>
@@ -14088,13 +14057,13 @@ var element = $('#3b44bb70-82c7-4050-ba85-50ebad43e27a');
 
  
  
-<div id="a59d948c-020c-40af-95c8-aa977c12ba61"></div>
+<div id="3fd4d8cb-244e-492f-9bc5-9e0d9c87c080"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a59d948c-020c-40af-95c8-aa977c12ba61');
+var element = $('#3fd4d8cb-244e-492f-9bc5-9e0d9c87c080');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "713b352f0cbe40b6975eff568acc033f", "version_major": 2, "version_minor": 0}
+{"model_id": "34defc0c6cc34a84b041ee99fc8ea9fd", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14110,10 +14079,10 @@ var element = $('#a59d948c-020c-40af-95c8-aa977c12ba61');
 
  
  
-<div id="ae0bed81-96c3-4ca1-a2e5-b6c84531ee60"></div>
+<div id="ff18c073-e0fa-4dec-9838-76c637e654ed"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#ae0bed81-96c3-4ca1-a2e5-b6c84531ee60');
+var element = $('#ff18c073-e0fa-4dec-9838-76c637e654ed');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14135,7 +14104,7 @@ var element = $('#ae0bed81-96c3-4ca1-a2e5-b6c84531ee60');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># select category features</span>
@@ -14161,13 +14130,13 @@ var element = $('#ae0bed81-96c3-4ca1-a2e5-b6c84531ee60');
 
  
  
-<div id="da6e60b6-0a3a-4555-a12e-40c42253e0ed"></div>
+<div id="bdbc65e5-3937-445c-a768-337818b192fc"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#da6e60b6-0a3a-4555-a12e-40c42253e0ed');
+var element = $('#bdbc65e5-3937-445c-a768-337818b192fc');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "91c4a27f5cc34a02974d8ed7b46242a7", "version_major": 2, "version_minor": 0}
+{"model_id": "e0571daca2d044abb4182bde03c6f530", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14183,10 +14152,10 @@ var element = $('#da6e60b6-0a3a-4555-a12e-40c42253e0ed');
 
  
  
-<div id="c7526e7e-1fbd-4104-8536-844dcde269e7"></div>
+<div id="c6b1d65d-3c2c-42fe-9b9b-6cc34d97ac40"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#c7526e7e-1fbd-4104-8536-844dcde269e7');
+var element = $('#c6b1d65d-3c2c-42fe-9b9b-6cc34d97ac40');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14201,7 +14170,7 @@ var element = $('#c7526e7e-1fbd-4104-8536-844dcde269e7');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1">#  user may have 2 Churn values, we keep value 1 only</span>
@@ -14226,13 +14195,13 @@ var element = $('#c7526e7e-1fbd-4104-8536-844dcde269e7');
 
  
  
-<div id="40622fa0-f048-4ecc-88e6-d50fb21dd315"></div>
+<div id="a3738362-0aa9-48c9-a45a-930cc3af8be6"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#40622fa0-f048-4ecc-88e6-d50fb21dd315');
+var element = $('#a3738362-0aa9-48c9-a45a-930cc3af8be6');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "c070d20a0d7b4a33bba6e315e1a959b7", "version_major": 2, "version_minor": 0}
+{"model_id": "281078b0921d4fc6b89ab845afc9fc7d", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14248,10 +14217,10 @@ var element = $('#40622fa0-f048-4ecc-88e6-d50fb21dd315');
 
  
  
-<div id="cdb7e798-541e-4f66-8f13-6cb0182f1d51"></div>
+<div id="2169082e-9731-4b81-9678-faffaae6957c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#cdb7e798-541e-4f66-8f13-6cb0182f1d51');
+var element = $('#2169082e-9731-4b81-9678-faffaae6957c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14266,7 +14235,7 @@ var element = $('#cdb7e798-541e-4f66-8f13-6cb0182f1d51');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># join all features</span>
@@ -14292,13 +14261,13 @@ var element = $('#cdb7e798-541e-4f66-8f13-6cb0182f1d51');
 
  
  
-<div id="78dec07d-a3c3-45da-8fff-e128eeeb7de0"></div>
+<div id="c2c4e840-b152-4760-94b4-afe0e3758625"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#78dec07d-a3c3-45da-8fff-e128eeeb7de0');
+var element = $('#c2c4e840-b152-4760-94b4-afe0e3758625');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "3d368ff405494e0184cf27d06056f5ed", "version_major": 2, "version_minor": 0}
+{"model_id": "8e94fa84bce543088285350e16a28d57", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14314,10 +14283,10 @@ var element = $('#78dec07d-a3c3-45da-8fff-e128eeeb7de0');
 
  
  
-<div id="0f39616d-4b2a-4d04-920f-517afbc7176e"></div>
+<div id="841ffb08-3609-4bf1-8aa4-bbe5ef153adb"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#0f39616d-4b2a-4d04-920f-517afbc7176e');
+var element = $('#841ffb08-3609-4bf1-8aa4-bbe5ef153adb');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14332,7 +14301,7 @@ var element = $('#0f39616d-4b2a-4d04-920f-517afbc7176e');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># drop all na value</span>
@@ -14358,13 +14327,13 @@ var element = $('#0f39616d-4b2a-4d04-920f-517afbc7176e');
 
  
  
-<div id="f02b9e22-623a-4855-acd5-a0790bdfd9d9"></div>
+<div id="6d14e601-1e12-4c33-82e6-a06457f70ab5"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#f02b9e22-623a-4855-acd5-a0790bdfd9d9');
+var element = $('#6d14e601-1e12-4c33-82e6-a06457f70ab5');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "f5bbf7b438b54956a8268782c5ff0fb1", "version_major": 2, "version_minor": 0}
+{"model_id": "6cb5d960d8c6409092d1e93dda9dba7c", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14380,10 +14349,10 @@ var element = $('#f02b9e22-623a-4855-acd5-a0790bdfd9d9');
 
  
  
-<div id="e49edaa0-a750-43b6-81ee-6dd444251591"></div>
+<div id="8d640c53-7484-4197-b8e0-219d0cf303fa"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e49edaa0-a750-43b6-81ee-6dd444251591');
+var element = $('#8d640c53-7484-4197-b8e0-219d0cf303fa');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14398,7 +14367,7 @@ var element = $('#e49edaa0-a750-43b6-81ee-6dd444251591');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># convert category features to numberic</span>
@@ -14426,13 +14395,13 @@ var element = $('#e49edaa0-a750-43b6-81ee-6dd444251591');
 
  
  
-<div id="afd45d3e-1358-4e03-a08f-b8ae28c8954c"></div>
+<div id="fdd1d6d0-e6e8-47fe-a463-62810911cdeb"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#afd45d3e-1358-4e03-a08f-b8ae28c8954c');
+var element = $('#fdd1d6d0-e6e8-47fe-a463-62810911cdeb');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "10887ae276ae4e4ea33ce22b9f3e349c", "version_major": 2, "version_minor": 0}
+{"model_id": "149fc5c93da64c25bac2259cb63f544b", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14448,10 +14417,10 @@ var element = $('#afd45d3e-1358-4e03-a08f-b8ae28c8954c');
 
  
  
-<div id="fe5c36a7-a93d-45cf-9cc4-46598de1765c"></div>
+<div id="88654dd3-4d2b-4032-b99a-300cc7e09107"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#fe5c36a7-a93d-45cf-9cc4-46598de1765c');
+var element = $('#88654dd3-4d2b-4032-b99a-300cc7e09107');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14466,7 +14435,7 @@ var element = $('#fe5c36a7-a93d-45cf-9cc4-46598de1765c');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">as</span> <span class="nn">F</span>
@@ -14490,13 +14459,13 @@ var element = $('#fe5c36a7-a93d-45cf-9cc4-46598de1765c');
 
  
  
-<div id="50aecf33-fe22-4716-aa0d-c196bd539996"></div>
+<div id="9b15087e-6f4c-4498-abf2-61fa6fa32949"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#50aecf33-fe22-4716-aa0d-c196bd539996');
+var element = $('#9b15087e-6f4c-4498-abf2-61fa6fa32949');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "c52a84a040c443a6ad47aac18085cc43", "version_major": 2, "version_minor": 0}
+{"model_id": "787157deb7014c6a85fa83d2048a0dce", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14512,10 +14481,10 @@ var element = $('#50aecf33-fe22-4716-aa0d-c196bd539996');
 
  
  
-<div id="8f105502-9840-49b0-ac88-42a175c23617"></div>
+<div id="0b9b090f-1393-4cdd-b271-c22ad627a395"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#8f105502-9840-49b0-ac88-42a175c23617');
+var element = $('#0b9b090f-1393-4cdd-b271-c22ad627a395');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14530,11 +14499,11 @@ var element = $('#8f105502-9840-49b0-ac88-42a175c23617');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-python2"><pre><span></span><span class="n">df_agg</span> <span class="o">=</span> <span class="n">df_calced</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">c</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df_calced</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
-<span class="n">df_agg</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class=" highlight hl-python2"><pre><span></span><span class="c1"># df_agg = df_calced.agg(*[F.count(F.when(F.isnull(c), c)).alias(c) for c in df_calced.columns])</span>
+<span class="c1"># df_agg.show()</span>
 </pre></div>
 
     </div>
@@ -14555,13 +14524,13 @@ var element = $('#8f105502-9840-49b0-ac88-42a175c23617');
 
  
  
-<div id="bc99f49d-1671-4418-afc8-f29abf7a5a6d"></div>
+<div id="2feb7a63-295d-43d8-9f0f-4036637542ce"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#bc99f49d-1671-4418-afc8-f29abf7a5a6d');
+var element = $('#2feb7a63-295d-43d8-9f0f-4036637542ce');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "39a642b9324f4a1abad51a4d10925646", "version_major": 2, "version_minor": 0}
+{"model_id": "d81ce4b4471642cdb4d3943490e369df", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14577,10 +14546,10 @@ var element = $('#bc99f49d-1671-4418-afc8-f29abf7a5a6d');
 
  
  
-<div id="bf35a193-8df1-4460-b842-1807275bf90e"></div>
+<div id="bd4cd3bb-ad68-44bf-9115-1866a8efdf63"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#bf35a193-8df1-4460-b842-1807275bf90e');
+var element = $('#bd4cd3bb-ad68-44bf-9115-1866a8efdf63');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14589,27 +14558,13 @@ var element = $('#bf35a193-8df1-4460-b842-1807275bf90e');
 
 </div>
 
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>+------+-----+---------+---------+-----------+------+-----+--------+------+-------------+------------+---------------+-------------+
-|userId|Churn|countSong|avgLength|countArtist|gender|level|location|method|genderIndexer|levelIndexer|locationIndexer|methodIndexer|
-+------+-----+---------+---------+-----------+------+-----+--------+------+-------------+------------+---------------+-------------+
-|     0|    0|        0|        0|          0|     0|    0|       0|     0|            0|           0|              0|            0|
-+------+-----+---------+---------+-----------+------+-----+--------+------+-------------+------------+---------------+-------------+</pre>
-</div>
-</div>
-
 </div>
 </div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># convert all features to vector</span>
@@ -14635,13 +14590,13 @@ var element = $('#bf35a193-8df1-4460-b842-1807275bf90e');
 
  
  
-<div id="ba8babad-e5ea-49f1-b5f6-5e9eb0d013c3"></div>
+<div id="778e45ce-20e6-4c06-9c2f-05a7f0f43235"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#ba8babad-e5ea-49f1-b5f6-5e9eb0d013c3');
+var element = $('#778e45ce-20e6-4c06-9c2f-05a7f0f43235');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "7aef17d9e07a42018511d7682a0a8795", "version_major": 2, "version_minor": 0}
+{"model_id": "6bf2ae80f2034b1bbb59a38e264d1a24", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14657,10 +14612,10 @@ var element = $('#ba8babad-e5ea-49f1-b5f6-5e9eb0d013c3');
 
  
  
-<div id="e3247ec2-803b-412b-8431-b9fbad2e26da"></div>
+<div id="1776f181-7ea1-4f35-942c-38eb950cacf1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e3247ec2-803b-412b-8431-b9fbad2e26da');
+var element = $('#1776f181-7ea1-4f35-942c-38eb950cacf1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14675,7 +14630,7 @@ var element = $('#e3247ec2-803b-412b-8431-b9fbad2e26da');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># standarded scaler the features column</span>
@@ -14702,13 +14657,13 @@ var element = $('#e3247ec2-803b-412b-8431-b9fbad2e26da');
 
  
  
-<div id="1981a1da-66cb-4011-b1f2-dfc36ba43d6c"></div>
+<div id="37155e39-b814-4602-a1b9-76d773e4d20f"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#1981a1da-66cb-4011-b1f2-dfc36ba43d6c');
+var element = $('#37155e39-b814-4602-a1b9-76d773e4d20f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "2432c4947e134e1da24a9368140858ee", "version_major": 2, "version_minor": 0}
+{"model_id": "377ad40a925f4e58a5db99d5414c9975", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14724,10 +14679,10 @@ var element = $('#1981a1da-66cb-4011-b1f2-dfc36ba43d6c');
 
  
  
-<div id="edd47c26-52dd-4834-b9e9-a46b67c04e78"></div>
+<div id="4cdc9db3-ddf1-4a1c-a094-9bb8eb2ef99d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#edd47c26-52dd-4834-b9e9-a46b67c04e78');
+var element = $('#4cdc9db3-ddf1-4a1c-a094-9bb8eb2ef99d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14742,7 +14697,7 @@ var element = $('#edd47c26-52dd-4834-b9e9-a46b67c04e78');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># drop useless column</span>
@@ -14769,13 +14724,13 @@ var element = $('#edd47c26-52dd-4834-b9e9-a46b67c04e78');
 
  
  
-<div id="9daf0737-6e29-4533-ab1a-146fd44522ae"></div>
+<div id="86c0a48c-c66c-489f-ae95-b2ee61832fa6"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#9daf0737-6e29-4533-ab1a-146fd44522ae');
+var element = $('#86c0a48c-c66c-489f-ae95-b2ee61832fa6');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "516bfa91d43742e982f5584318b5a0b4", "version_major": 2, "version_minor": 0}
+{"model_id": "791a1206899b464b8b0bad1192cbb1d7", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14791,10 +14746,10 @@ var element = $('#9daf0737-6e29-4533-ab1a-146fd44522ae');
 
  
  
-<div id="2f6406df-a898-4bb8-ab45-ebe826d00c9a"></div>
+<div id="709f4357-438b-454e-8340-9afdb33046ca"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#2f6406df-a898-4bb8-ab45-ebe826d00c9a');
+var element = $('#709f4357-438b-454e-8340-9afdb33046ca');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14817,7 +14772,7 @@ var element = $('#2f6406df-a898-4bb8-ab45-ebe826d00c9a');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># use 70% data as train dataset, and 15% for test and val dataset</span>
@@ -14842,13 +14797,13 @@ var element = $('#2f6406df-a898-4bb8-ab45-ebe826d00c9a');
 
  
  
-<div id="e5a6e8a6-c056-4acb-885a-887fd607b2a2"></div>
+<div id="86e9e198-008d-44b5-8f57-26b30f991339"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e5a6e8a6-c056-4acb-885a-887fd607b2a2');
+var element = $('#86e9e198-008d-44b5-8f57-26b30f991339');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "0196f4622e394088a3affa6ba900dd71", "version_major": 2, "version_minor": 0}
+{"model_id": "592f979b83e241898a4cdcded606d818", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14864,10 +14819,10 @@ var element = $('#e5a6e8a6-c056-4acb-885a-887fd607b2a2');
 
  
  
-<div id="65777193-7139-4dfd-bedb-755caee123f2"></div>
+<div id="aab7be85-2650-4c4a-9f14-4c1964ef59b5"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#65777193-7139-4dfd-bedb-755caee123f2');
+var element = $('#aab7be85-2650-4c4a-9f14-4c1964ef59b5');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14889,7 +14844,72 @@ var element = $('#65777193-7139-4dfd-bedb-755caee123f2');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python2"><pre><span></span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">MulticlassClassificationEvaluator</span><span class="p">(</span><span class="n">predictionCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span> <span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;Churn&quot;</span><span class="p">)</span>
+<span class="n">binary_evaluator</span> <span class="o">=</span> <span class="n">BinaryClassificationEvaluator</span><span class="p">(</span><span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;Churn&quot;</span><span class="p">,</span> <span class="n">rawPredictionCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="78e99fba-aa3b-46ad-8193-3a805ea06aee"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#78e99fba-aa3b-46ad-8193-3a805ea06aee');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "130ef90d77804576955c0e92b7015973", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="864d46a8-5266-4168-a8ee-4c0a15e44282"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#864d46a8-5266-4168-a8ee-4c0a15e44282');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># build linear regression model</span>
@@ -14915,13 +14935,13 @@ var element = $('#65777193-7139-4dfd-bedb-755caee123f2');
 
  
  
-<div id="b58d4b3e-8ed3-4d8b-8ebf-d1a441178dcb"></div>
+<div id="ff0ed4e5-316f-4c05-9423-9c250bdfbdd2"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b58d4b3e-8ed3-4d8b-8ebf-d1a441178dcb');
+var element = $('#ff0ed4e5-316f-4c05-9423-9c250bdfbdd2');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "bb8986f45a964400bece4258799c2481", "version_major": 2, "version_minor": 0}
+{"model_id": "52e7dd9b7de44cd4928a9c7fa210f346", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14937,10 +14957,10 @@ var element = $('#b58d4b3e-8ed3-4d8b-8ebf-d1a441178dcb');
 
  
  
-<div id="dfee2b24-ab0f-496b-a131-1ed8aa1e9c3e"></div>
+<div id="9b37088e-9203-4d46-a514-3b3817d2b2d5"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#dfee2b24-ab0f-496b-a131-1ed8aa1e9c3e');
+var element = $('#9b37088e-9203-4d46-a514-3b3817d2b2d5');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -14955,7 +14975,7 @@ var element = $('#dfee2b24-ab0f-496b-a131-1ed8aa1e9c3e');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># train the dataset by using linear regression model</span>
@@ -14981,13 +15001,13 @@ var element = $('#dfee2b24-ab0f-496b-a131-1ed8aa1e9c3e');
 
  
  
-<div id="132a34c2-b28e-42f4-a2e4-23329b080ac2"></div>
+<div id="45b9773f-efde-4f43-bfef-e08d6cde3a5c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#132a34c2-b28e-42f4-a2e4-23329b080ac2');
+var element = $('#45b9773f-efde-4f43-bfef-e08d6cde3a5c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "f58bdeb3416646b18b140890c32ab4c6", "version_major": 2, "version_minor": 0}
+{"model_id": "3319cc84394f4f84b2abf0b344f143d5", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -15003,10 +15023,10 @@ var element = $('#132a34c2-b28e-42f4-a2e4-23329b080ac2');
 
  
  
-<div id="91a11a9f-2bcd-4e7f-a28e-038dba5e02aa"></div>
+<div id="dc0c3759-27c3-467f-adcf-b95af1e1f048"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#91a11a9f-2bcd-4e7f-a28e-038dba5e02aa');
+var element = $('#dc0c3759-27c3-467f-adcf-b95af1e1f048');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -15021,11 +15041,14 @@ var element = $('#91a11a9f-2bcd-4e7f-a28e-038dba5e02aa');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-python2"><pre><span></span><span class="c1"># build  the evaluator</span>
-<span class="n">evaluator</span> <span class="o">=</span> <span class="n">BinaryClassificationEvaluator</span><span class="p">(</span><span class="n">rawPredictionCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span><span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;Churn&quot;</span><span class="p">)</span>
+<div class=" highlight hl-python2"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;LinearRegression areaUnderPR for train dataset:&quot;</span><span class="p">,</span> <span class="n">binary_evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">train_pre</span><span class="p">,</span> <span class="p">{</span><span class="n">binary_evaluator</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span><span class="s2">&quot;areaUnderPR&quot;</span><span class="p">}))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;LinearRegression areaUnderROC for train dataset:&quot;</span><span class="p">,</span> <span class="n">binary_evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">train_pre</span><span class="p">,</span> <span class="p">{</span><span class="n">binary_evaluator</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span><span class="s2">&quot;areaUnderROC&quot;</span><span class="p">}))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;LinearRegression areaUnderPR for test dataset:&quot;</span><span class="p">,</span> <span class="n">binary_evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_pre</span><span class="p">,</span> <span class="p">{</span><span class="n">binary_evaluator</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span><span class="s2">&quot;areaUnderPR&quot;</span><span class="p">}))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;LinearRegression areaUnderROC for test dataset:&quot;</span><span class="p">,</span> <span class="n">binary_evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_pre</span><span class="p">,</span> <span class="p">{</span><span class="n">binary_evaluator</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span><span class="s2">&quot;areaUnderROC&quot;</span><span class="p">}))</span>
 </pre></div>
 
     </div>
@@ -15046,13 +15069,13 @@ var element = $('#91a11a9f-2bcd-4e7f-a28e-038dba5e02aa');
 
  
  
-<div id="dfa1085f-f57f-4314-b1cd-73200ef6879c"></div>
+<div id="67ee0ade-9123-47b9-81b6-b3b933b84e38"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#dfa1085f-f57f-4314-b1cd-73200ef6879c');
+var element = $('#67ee0ade-9123-47b9-81b6-b3b933b84e38');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "a93aa81ff29d4e03971688e7e97988c9", "version_major": 2, "version_minor": 0}
+{"model_id": "d20e4106d5394b8b9c6d5f2d4cad4fc8", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -15068,76 +15091,10 @@ var element = $('#dfa1085f-f57f-4314-b1cd-73200ef6879c');
 
  
  
-<div id="3f147338-611a-4123-a32c-81bacc973be8"></div>
+<div id="ca420f0b-bc02-4878-b4c9-e9cc817a49af"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#3f147338-611a-4123-a32c-81bacc973be8');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python2"><pre><span></span><span class="c1"># use the evaluator the evaluate train and test dataset</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;LinearRegression Accuracy for train dataset:&quot;</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">train_pre</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;LinearRegression Accuracy for test dataset:&quot;</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_pre</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-
- 
- 
-<div id="63fe10ed-8130-4364-aac5-b07eb8cb4c49"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#63fe10ed-8130-4364-aac5-b07eb8cb4c49');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "79316305addf4d35a1121a3e7cf9f186", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-
- 
- 
-<div id="a79efa29-5a3d-4395-b773-a595eec7a531"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#a79efa29-5a3d-4395-b773-a595eec7a531');
+var element = $('#ca420f0b-bc02-4878-b4c9-e9cc817a49af');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -15152,8 +15109,10 @@ var element = $('#a79efa29-5a3d-4395-b773-a595eec7a531');
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>LinearRegression Accuracy for train dataset: 0.6678041271593208
-LinearRegression Accuracy for test dataset: 0.9106971716581354</pre>
+<pre>LinearRegression areaUnderPR for train dataset: 0.9694515921839907
+LinearRegression areaUnderROC for train dataset: 0.9084236463411847
+LinearRegression areaUnderPR for test dataset: 0.9687004896898969
+LinearRegression areaUnderROC for test dataset: 0.9133905313145707</pre>
 </div>
 </div>
 
@@ -15170,7 +15129,7 @@ LinearRegression Accuracy for test dataset: 0.9106971716581354</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># build logistregression model</span>
@@ -15196,13 +15155,13 @@ LinearRegression Accuracy for test dataset: 0.9106971716581354</pre>
 
  
  
-<div id="6842cbae-412c-4d57-9812-54e9daa1ca92"></div>
+<div id="41ce3865-7462-4fae-b900-b2a9b10e577c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6842cbae-412c-4d57-9812-54e9daa1ca92');
+var element = $('#41ce3865-7462-4fae-b900-b2a9b10e577c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "3de75565245b40959ac8486058b484ad", "version_major": 2, "version_minor": 0}
+{"model_id": "870f5fac7d504bfe9d52f1eea1046d55", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -15218,10 +15177,10 @@ var element = $('#6842cbae-412c-4d57-9812-54e9daa1ca92');
 
  
  
-<div id="5df57551-3a6c-49bb-903f-e14b122f81b4"></div>
+<div id="a733cb77-9138-405f-a3dc-7d7d080e8544"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#5df57551-3a6c-49bb-903f-e14b122f81b4');
+var element = $('#a733cb77-9138-405f-a3dc-7d7d080e8544');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -15236,7 +15195,7 @@ var element = $('#5df57551-3a6c-49bb-903f-e14b122f81b4');
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>Exception in thread cell_monitor-27:
+<pre>Exception in thread cell_monitor-29:
 Traceback (most recent call last):
   File &#34;/opt/conda/lib/python3.7/threading.py&#34;, line 917, in _bootstrap_inner
     self.run()
@@ -15244,7 +15203,7 @@ Traceback (most recent call last):
     self._target(*self._args, **self._kwargs)
   File &#34;/opt/conda/lib/python3.7/site-packages/awseditorssparkmonitoringwidget-1.0-py3.7.egg/awseditorssparkmonitoringwidget/cellmonitor.py&#34;, line 178, in cell_monitor
     job_binned_stages[job_id][stage_id] = all_stages[stage_id]
-KeyError: 1758
+KeyError: 1220
 
 </pre>
 </div>
@@ -15256,7 +15215,7 @@ KeyError: 1758
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># train the dataset by using logist regression model</span>
@@ -15282,13 +15241,13 @@ KeyError: 1758
 
  
  
-<div id="ba911f02-8980-432a-a218-2e5b2703d389"></div>
+<div id="c6c6e0cc-1c02-47ae-87ea-081ce2af9d24"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#ba911f02-8980-432a-a218-2e5b2703d389');
+var element = $('#c6c6e0cc-1c02-47ae-87ea-081ce2af9d24');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "898c844d3c4f497fb3e655bbdf4d06b8", "version_major": 2, "version_minor": 0}
+{"model_id": "8e40de7dd93b4791985a218ebd4d9165", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -15304,10 +15263,10 @@ var element = $('#ba911f02-8980-432a-a218-2e5b2703d389');
 
  
  
-<div id="8e22439e-d099-4d87-965c-66076c0619b4"></div>
+<div id="58b94e5e-9280-4c6f-8641-7bdb4bd23863"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#8e22439e-d099-4d87-965c-66076c0619b4');
+var element = $('#58b94e5e-9280-4c6f-8641-7bdb4bd23863');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -15322,7 +15281,7 @@ var element = $('#8e22439e-d099-4d87-965c-66076c0619b4');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># use the evaluator the evaluate train and test dataset</span>
@@ -15348,13 +15307,13 @@ var element = $('#8e22439e-d099-4d87-965c-66076c0619b4');
 
  
  
-<div id="f7c2bab1-ae63-4def-a58e-579785569b89"></div>
+<div id="841be32f-ad5b-4a3a-b102-a54f0324c88c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#f7c2bab1-ae63-4def-a58e-579785569b89');
+var element = $('#841be32f-ad5b-4a3a-b102-a54f0324c88c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "3bedd13c89bc497399d229ee376049b8", "version_major": 2, "version_minor": 0}
+{"model_id": "b9800434c3d849e0be4b8e2333638f0d", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -15370,10 +15329,10 @@ var element = $('#f7c2bab1-ae63-4def-a58e-579785569b89');
 
  
  
-<div id="7ee9cd18-f718-4338-b1fc-4e34fb458795"></div>
+<div id="930c0cf6-724c-44c9-b529-ebb5275d2dea"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#7ee9cd18-f718-4338-b1fc-4e34fb458795');
+var element = $('#930c0cf6-724c-44c9-b529-ebb5275d2dea');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -15388,8 +15347,8 @@ var element = $('#7ee9cd18-f718-4338-b1fc-4e34fb458795');
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>LogistRegression Accuracy for train dataset: 0.5971902287939127
-LogistRegression Accuracy for test dataset: 0.6027563842723956</pre>
+<pre>LogistRegression Accuracy for train dataset: 0.8532386479957974
+LogistRegression Accuracy for test dataset: 0.8572162102619808</pre>
 </div>
 </div>
 
@@ -15406,7 +15365,7 @@ LogistRegression Accuracy for test dataset: 0.6027563842723956</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># build RandomForest model</span>
@@ -15432,13 +15391,13 @@ LogistRegression Accuracy for test dataset: 0.6027563842723956</pre>
 
  
  
-<div id="16d8f504-7181-42e2-b0bd-8734487e74c8"></div>
+<div id="8c411556-3ec2-442a-a5df-71c49367c016"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#16d8f504-7181-42e2-b0bd-8734487e74c8');
+var element = $('#8c411556-3ec2-442a-a5df-71c49367c016');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "987a9ee1a4e04457bed99d06878f0d58", "version_major": 2, "version_minor": 0}
+{"model_id": "5b8c786e521143adb0fe6d1b9935556d", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -15454,10 +15413,10 @@ var element = $('#16d8f504-7181-42e2-b0bd-8734487e74c8');
 
  
  
-<div id="640db712-438b-44c8-a565-6529b4fb456c"></div>
+<div id="a3aab146-ae2c-4604-aaf3-69799ef7887c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#640db712-438b-44c8-a565-6529b4fb456c');
+var element = $('#a3aab146-ae2c-4604-aaf3-69799ef7887c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -15472,7 +15431,7 @@ var element = $('#640db712-438b-44c8-a565-6529b4fb456c');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python2"><pre><span></span><span class="c1"># train the dataset by using Random Forest model</span>
@@ -15498,13 +15457,13 @@ var element = $('#640db712-438b-44c8-a565-6529b4fb456c');
 
  
  
-<div id="fc7e02dd-cfde-4e6f-80f2-47f9003efde0"></div>
+<div id="db00f413-e26b-40aa-a7e2-2801131f94ac"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#fc7e02dd-cfde-4e6f-80f2-47f9003efde0');
+var element = $('#db00f413-e26b-40aa-a7e2-2801131f94ac');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "792c9e9a8a36428b845e237ff872c447", "version_major": 2, "version_minor": 0}
+{"model_id": "2dcccf5c66414f41949dab192ebd614a", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -15520,10 +15479,10 @@ var element = $('#fc7e02dd-cfde-4e6f-80f2-47f9003efde0');
 
  
  
-<div id="a0f1c40b-6d5c-411d-9184-4e7073004216"></div>
+<div id="dfd90f91-23da-4995-8167-c3cccce79b05"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a0f1c40b-6d5c-411d-9184-4e7073004216');
+var element = $('#dfd90f91-23da-4995-8167-c3cccce79b05');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -15538,12 +15497,14 @@ var element = $('#a0f1c40b-6d5c-411d-9184-4e7073004216');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-python2"><pre><span></span><span class="c1"># use the evaluator the evaluate train and test dataset</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;RandomForest Regression Accuracy for train dataset:&quot;</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">train_pre_forest</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;RandomForest Regression Accuracy for test dataset:&quot;</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_pre_forest</span><span class="p">))</span>
+<div class=" highlight hl-python2"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;RandomForest Regression Accuracy for train dataset:&quot;</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">train_pre_forest</span><span class="p">,</span> <span class="p">{</span><span class="n">evaluator</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span><span class="s2">&quot;accuracy&quot;</span><span class="p">}))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;RandomForest Regression F1 Score for train dataset:&quot;</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">train_pre_forest</span><span class="p">,</span> <span class="p">{</span><span class="n">evaluator</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span><span class="s2">&quot;f1&quot;</span><span class="p">}))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;RandomForest Regression Accuracy for test dataset:&quot;</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_pre_forest</span><span class="p">,</span> <span class="p">{</span><span class="n">evaluator</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span><span class="s2">&quot;accuracy&quot;</span><span class="p">}))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;RandomForest Regression F1 for test dataset:&quot;</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_pre_forest</span><span class="p">,</span> <span class="p">{</span><span class="n">evaluator</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span><span class="s2">&quot;f1&quot;</span><span class="p">}))</span>
 </pre></div>
 
     </div>
@@ -15564,13 +15525,13 @@ var element = $('#a0f1c40b-6d5c-411d-9184-4e7073004216');
 
  
  
-<div id="e42930ac-bfee-4bb5-a3e8-2eb8b71c5fd7"></div>
+<div id="b8f0d11c-fd4c-4b7b-a049-591cb9b328c2"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e42930ac-bfee-4bb5-a3e8-2eb8b71c5fd7');
+var element = $('#b8f0d11c-fd4c-4b7b-a049-591cb9b328c2');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "40e1c0990f3e40ee9ac1af6e3a0cd51a", "version_major": 2, "version_minor": 0}
+{"model_id": "ebef9695ea7c4f0ba996a077def874bc", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -15586,10 +15547,10 @@ var element = $('#e42930ac-bfee-4bb5-a3e8-2eb8b71c5fd7');
 
  
  
-<div id="7b02322a-7274-485b-be64-c8610ca65247"></div>
+<div id="6757b70c-ded9-4b81-b50c-a29895e7044c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#7b02322a-7274-485b-be64-c8610ca65247');
+var element = $('#6757b70c-ded9-4b81-b50c-a29895e7044c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -15604,23 +15565,43 @@ var element = $('#7b02322a-7274-485b-be64-c8610ca65247');
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>RandomForest Regression Accuracy for train dataset: 0.6351333140056861
-RandomForest Regression Accuracy for test dataset: 0.8192344933184481</pre>
+<pre>RandomForest Regression Accuracy for train dataset: 0.8642411776049367
+RandomForest Regression F1 Score for train dataset: 0.8670061781061109
+RandomForest Regression Accuracy for test dataset: 0.8525222551928784
+RandomForest Regression F1 for test dataset: 0.8514235493053522</pre>
 </div>
 </div>
 
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="GridSearch">GridSearch<a class="anchor-link" href="#GridSearch">&#182;</a></h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-python2"><pre><span></span><span class="c1"># base on 3 model on test dataset, choose linearregression as the final model</span>
-<span class="n">val_prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Val dataset accuracy:&quot;</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">val_prediction</span><span class="p">))</span>
+<div class=" highlight hl-python2"><pre><span></span><span class="n">linearregression_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">lr</span><span class="o">.</span><span class="n">regParam</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+    <span class="n">lr</span><span class="o">.</span><span class="n">fitIntercept</span><span class="p">:</span> <span class="p">[</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">],</span>
+    <span class="n">lr</span><span class="o">.</span><span class="n">maxIter</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">logistregression_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">logist_lr</span><span class="o">.</span><span class="n">maxIter</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="n">logist_lr</span><span class="o">.</span><span class="n">fitIntercept</span><span class="p">:</span> <span class="p">[</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">],</span>
+    <span class="n">logist_lr</span><span class="o">.</span><span class="n">regParam</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">forest_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">forest</span><span class="o">.</span><span class="n">maxDepth</span> <span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> 
+            <span class="n">forest</span><span class="o">.</span><span class="n">minInstancesPerNode</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> 
+            <span class="n">forest</span><span class="o">.</span><span class="n">maxBins</span> <span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> 
+            <span class="n">forest</span><span class="o">.</span><span class="n">numTrees</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">]}</span>
 </pre></div>
 
     </div>
@@ -15641,13 +15622,13 @@ RandomForest Regression Accuracy for test dataset: 0.8192344933184481</pre>
 
  
  
-<div id="a36225df-77c9-475c-8c0c-b5047c8757fc"></div>
+<div id="7c8ac32d-646f-42a7-bd1d-1622696c627f"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a36225df-77c9-475c-8c0c-b5047c8757fc');
+var element = $('#7c8ac32d-646f-42a7-bd1d-1622696c627f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "62163d6463d64392bde9d2c80117d73b", "version_major": 2, "version_minor": 0}
+{"model_id": "80ed5481aba8440280697fc2079f2e90", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -15663,10 +15644,10 @@ var element = $('#a36225df-77c9-475c-8c0c-b5047c8757fc');
 
  
  
-<div id="37ff5625-dc29-4afb-9b1f-b0088e1cba3b"></div>
+<div id="c8ffca53-25c6-454e-96e5-d29e5e9940c0"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#37ff5625-dc29-4afb-9b1f-b0088e1cba3b');
+var element = $('#c8ffca53-25c6-454e-96e5-d29e5e9940c0');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -15675,19 +15656,386 @@ var element = $('#37ff5625-dc29-4afb-9b1f-b0088e1cba3b');
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python2"><pre><span></span><span class="n">all_module_dicts</span> <span class="o">=</span> <span class="p">[</span><span class="n">linearregression_dict</span><span class="p">,</span> <span class="n">logistregression_dict</span><span class="p">,</span> <span class="n">forest_dict</span><span class="p">]</span>
+<span class="n">params_maps</span> <span class="o">=</span> <span class="p">[</span><span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">gb</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="n">gb</span><span class="o">.</span><span class="n">addGrid</span><span class="p">(</span><span class="o">*</span><span class="n">param</span><span class="p">),</span> 
+                    <span class="n">module</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> 
+                    <span class="n">ParamGridBuilder</span><span class="p">())</span><span class="o">.</span><span class="n">build</span><span class="p">()</span> <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">all_module_dicts</span><span class="p">]</span>
+
+<span class="n">all_module_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;LinearRegression&quot;</span><span class="p">,</span> <span class="s2">&quot;LogistRegression&quot;</span><span class="p">,</span> <span class="s2">&quot;RandomForestRegression&quot;</span><span class="p">]</span>
+<span class="n">all_modules</span> <span class="o">=</span> <span class="p">[</span><span class="n">lr</span><span class="p">,</span> <span class="n">logist_lr</span><span class="p">,</span> <span class="n">forest</span><span class="p">]</span>
+<span class="n">all_evaluates</span> <span class="o">=</span> <span class="p">[</span><span class="n">binary_evaluator</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">evaluator</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">all_module_combine</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">all_module_names</span><span class="p">,</span><span class="n">all_modules</span><span class="p">,</span> <span class="n">params_maps</span><span class="p">,</span> <span class="n">all_evaluates</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
 <div class="output_area">
 
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Val dataset accuracy: 0.9112372646279047</pre>
+
+
+
+ 
+ 
+<div id="a1093c1d-9f3b-404f-91b8-5038611f9699"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#a1093c1d-9f3b-404f-91b8-5038611f9699');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "1b177298c360409c8c7bc443d159f4f4", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="3f778c7d-ffd8-494c-8c7f-b994b05b7242"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#3f778c7d-ffd8-494c-8c7f-b994b05b7242');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python2"><pre><span></span><span class="n">modules</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">module_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">eva</span> <span class="ow">in</span> <span class="n">all_module_combine</span><span class="p">:</span>
+    <span class="n">cross</span> <span class="o">=</span> <span class="n">CrossValidator</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">estimatorParamMaps</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">evaluator</span><span class="o">=</span><span class="n">eva</span> <span class="p">,</span><span class="n">numFolds</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">cModel</span> <span class="o">=</span> <span class="n">cross</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span>
+    
+    <span class="n">train_result</span> <span class="o">=</span> <span class="n">cModel</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span>
+    <span class="n">test_result</span> <span class="o">=</span> <span class="n">cModel</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
+    <span class="n">accuracy</span><span class="p">,</span> <span class="n">f1</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="s2">&quot;f1&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eva</span><span class="p">,</span> <span class="n">MulticlassClassificationEvaluator</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="s2">&quot;areaUnderPR&quot;</span><span class="p">,</span> <span class="s2">&quot;areaUnderROC&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{module_name} {accuracy.capitalize()} for Train dataset:&quot;</span><span class="p">,</span> <span class="n">eva</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">train_result</span><span class="p">,</span> <span class="p">{</span><span class="n">eva</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">}))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{module_name} {f1.capitalize()} for Train dataset:&quot;</span><span class="p">,</span> <span class="n">eva</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">train_result</span><span class="p">,</span> <span class="p">{</span><span class="n">eva</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span> <span class="n">f1</span><span class="p">}))</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{module_name} {accuracy.capitalize()} for Test dataset:&quot;</span><span class="p">,</span> <span class="n">eva</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_result</span><span class="p">,</span> <span class="p">{</span><span class="n">eva</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">}))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{module_name} {f1.capitalize()} for Test dataset:&quot;</span><span class="p">,</span> <span class="n">eva</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_result</span><span class="p">,</span> <span class="p">{</span><span class="n">eva</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span> <span class="n">f1</span><span class="p">}))</span>
+    
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Best params for {module_name}:&quot;</span><span class="p">,</span> <span class="n">cModel</span><span class="o">.</span><span class="n">getEstimatorParamMaps</span><span class="p">()[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">cModel</span><span class="o">.</span><span class="n">avgMetrics</span><span class="p">)])</span>
+    <span class="k">print</span><span class="p">()</span>
+    
+    <span class="n">modules</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;module&quot;</span><span class="p">:</span> <span class="n">cModel</span><span class="p">,</span> <span class="s2">&quot;evaluator&quot;</span><span class="p">:</span> <span class="n">eva</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="4987d12a-6ccb-44f9-b564-0c499a30d1fb"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#4987d12a-6ccb-44f9-b564-0c499a30d1fb');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "6150b3d9e32d40b0ac1e0a4810a91325", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>An error was encountered:
+Invalid status code &#39;404&#39; from https://172.31.9.152:18888/sessions/0 with error payload: {&#34;msg&#34;:&#34;Session &#39;0&#39; not found.&#34;}
+</pre>
 </div>
 </div>
 
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python2"><pre><span></span><span class="c1"># base on final result , use linearregression as the final model</span>
+<span class="n">final_module_dict</span> <span class="o">=</span> <span class="n">modules</span><span class="p">[</span><span class="s2">&quot;LinearRegression&quot;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="8210e361-edbe-4b4e-9bc3-138816794dec"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#8210e361-edbe-4b4e-9bc3-138816794dec');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "7ecd4f6d32114a28925c81d77f96c2c3", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>An error was encountered:
+Invalid status code &#39;404&#39; from https://172.31.9.152:18888/sessions/0 with error payload: {&#34;msg&#34;:&#34;Session &#39;0&#39; not found.&#34;}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python2"><pre><span></span><span class="n">final_module</span> <span class="o">=</span> <span class="n">final_module_dict</span><span class="p">[</span><span class="s2">&quot;module&quot;</span><span class="p">]</span>
+<span class="n">val_tr</span> <span class="o">=</span> <span class="n">final_module</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="ac5d217f-1b71-4521-8aa8-a5412e575eaa"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#ac5d217f-1b71-4521-8aa8-a5412e575eaa');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "6a818651f67d417bb63512802ae44658", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>An error was encountered:
+Invalid status code &#39;404&#39; from https://172.31.9.152:18888/sessions/0 with error payload: {&#34;msg&#34;:&#34;Session &#39;0&#39; not found.&#34;}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python2"><pre><span></span><span class="n">final_evalutor</span> <span class="o">=</span> <span class="n">final_module_dict</span><span class="p">[</span><span class="s2">&quot;evaluator&quot;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Val dataset accuracy:&quot;</span><span class="p">,</span> <span class="n">final_evalutor</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">val_pre</span><span class="p">,</span> <span class="p">{</span><span class="n">final_evalutor</span><span class="o">.</span><span class="n">metricName</span><span class="p">:</span> <span class="s2">&quot;areaUnderPR&quot;</span><span class="p">}))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="357edd65-bd6d-42da-9a93-0a77fbed2d96"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#357edd65-bd6d-42da-9a93-0a77fbed2d96');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "e4ab84e5533a4e548895091c72d6b5c2", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>An error was encountered:
+Invalid status code &#39;404&#39; from https://172.31.9.152:18888/sessions/0 with error payload: {&#34;msg&#34;:&#34;Session &#39;0&#39; not found.&#34;}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python2"><pre><span></span><span class="c1"># base on 3 model on test dataset, choose linearregression as the final model</span>
+<span class="c1"># val_prediction = model.transform(val_dataset)</span>
+<span class="c1"># print(&quot;Val dataset accuracy:&quot;, evaluator.evaluate(val_prediction))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="5b750ad0-44ca-46b0-b560-2fde4cc00695"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#5b750ad0-44ca-46b0-b560-2fde4cc00695');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "027fb4e286b04c18bc4052b740476ba3", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>An error was encountered:
+Invalid status code &#39;404&#39; from https://172.31.9.152:18888/sessions/0 with error payload: {&#34;msg&#34;:&#34;Session &#39;0&#39; not found.&#34;}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h6 id="Accuracy&#65306;&#20934;&#30830;&#29575;&#65292;&#35813;&#25351;&#26631;&#30340;&#39640;&#20302;&#33021;&#30452;&#25509;&#20915;&#23450;&#27169;&#22411;&#30340;&#23436;&#21892;&#31243;&#24230;&#65292;&#20294;&#38656;&#35201;&#32467;&#21512;&#35757;&#32451;&#38598;&#21644;&#27979;&#35797;&#38598;&#26469;&#19979;&#23450;&#35770;&#65292;&#22914;&#26524;&#35757;&#32451;&#38598;&#20934;&#30830;&#29575;&#22826;&#39640;&#65292;&#20294;&#35757;&#32451;&#38598;&#20934;&#30830;&#29575;&#36807;&#20302;&#65292;&#37027;&#27169;&#22411;&#23601;&#20250;&#36807;&#25311;&#21512;&#65307;&#22914;&#26524;&#35757;&#32451;&#38598;&#21644;&#27979;&#35797;&#38598;&#30340;accuracy&#37117;&#22826;&#20302;&#65292;&#21017;&#35828;&#26126;&#27424;&#25311;&#21512;&#12290;">Accuracy&#65306;&#20934;&#30830;&#29575;&#65292;&#35813;&#25351;&#26631;&#30340;&#39640;&#20302;&#33021;&#30452;&#25509;&#20915;&#23450;&#27169;&#22411;&#30340;&#23436;&#21892;&#31243;&#24230;&#65292;&#20294;&#38656;&#35201;&#32467;&#21512;&#35757;&#32451;&#38598;&#21644;&#27979;&#35797;&#38598;&#26469;&#19979;&#23450;&#35770;&#65292;&#22914;&#26524;&#35757;&#32451;&#38598;&#20934;&#30830;&#29575;&#22826;&#39640;&#65292;&#20294;&#35757;&#32451;&#38598;&#20934;&#30830;&#29575;&#36807;&#20302;&#65292;&#37027;&#27169;&#22411;&#23601;&#20250;&#36807;&#25311;&#21512;&#65307;&#22914;&#26524;&#35757;&#32451;&#38598;&#21644;&#27979;&#35797;&#38598;&#30340;accuracy&#37117;&#22826;&#20302;&#65292;&#21017;&#35828;&#26126;&#27424;&#25311;&#21512;&#12290;<a class="anchor-link" href="#Accuracy&#65306;&#20934;&#30830;&#29575;&#65292;&#35813;&#25351;&#26631;&#30340;&#39640;&#20302;&#33021;&#30452;&#25509;&#20915;&#23450;&#27169;&#22411;&#30340;&#23436;&#21892;&#31243;&#24230;&#65292;&#20294;&#38656;&#35201;&#32467;&#21512;&#35757;&#32451;&#38598;&#21644;&#27979;&#35797;&#38598;&#26469;&#19979;&#23450;&#35770;&#65292;&#22914;&#26524;&#35757;&#32451;&#38598;&#20934;&#30830;&#29575;&#22826;&#39640;&#65292;&#20294;&#35757;&#32451;&#38598;&#20934;&#30830;&#29575;&#36807;&#20302;&#65292;&#37027;&#27169;&#22411;&#23601;&#20250;&#36807;&#25311;&#21512;&#65307;&#22914;&#26524;&#35757;&#32451;&#38598;&#21644;&#27979;&#35797;&#38598;&#30340;accuracy&#37117;&#22826;&#20302;&#65292;&#21017;&#35828;&#26126;&#27424;&#25311;&#21512;&#12290;">&#182;</a></h6><h6 id="&#36229;&#21442;&#25968;&#35843;&#20248;&#65306;">&#36229;&#21442;&#25968;&#35843;&#20248;&#65306;<a class="anchor-link" href="#&#36229;&#21442;&#25968;&#35843;&#20248;&#65306;">&#182;</a></h6>
+<pre><code> 对于随机森林模型，一开始使用的树根深度是10，其他参数默认的情况下拿捏不准具体参数，使用网格搜索后发现：maxDepth、minInstancesPerNode、maxBins、numTrees这几个超参数分别在 XX, XX, XX, XX的时候通过CrossValidator认为准确率最高；
+ 对于线性回归模型：regParam、fitIntercept、maxIter分别为XX，XX，XX时准确率最高；
+ 对于logic regression：regParam、fitIntercept、maxIter分别为XX，XX，XX时准确率最高。
+
+</code></pre>
+<h6 id="&#38590;&#28857;&#65306;&#36807;&#31243;&#20013;&#21457;&#29616;&#36229;&#21442;&#25968;&#35843;&#20248;&#26159;&#27604;&#36739;&#38590;&#30340;&#65292;&#32780;&#19988;&#30001;&#20110;&#25968;&#25454;&#38598;&#24222;&#22823;&#65292;&#27599;&#27425;&#36816;&#34892;&#37117;&#35201;&#33457;&#39134;&#22909;&#38271;&#26102;&#38388;&#65292;&#22312;AWS&#37324;&#38754;&#26102;&#38388;&#24847;&#21619;&#30528;&#32654;&#20803;&#65307;&#20294;&#23436;&#25104;&#20102;&#31532;&#19968;&#29256;&#39033;&#30446;&#20197;&#21518;&#35273;&#24471;&#21508;&#20010;&#27169;&#22411;&#20043;&#38388;&#30340;&#20248;&#21183;&#21155;&#21183;&#21644;&#20391;&#37325;&#28857;&#20381;&#28982;&#19981;&#22826;&#28165;&#26224;&#26126;&#20102;&#65292;&#20197;&#19978;&#19977;&#20010;&#27169;&#22411;&#37117;&#26159;&#22312;&#24515;&#37324;&#29282;&#35760;&#30340;&#27169;&#22411;&#65292;&#33267;&#20110;&#21738;&#19968;&#20010;&#26356;&#36866;&#29992;&#20110;&#26412;&#27425;&#39033;&#30446;&#65292;&#33041;&#28023;&#37324;&#22987;&#32456;&#26159;&quot;&#20108;&#20803;&#20998;&#31867;&#32447;&#24615;&#22238;&#24402;&#36739;&#22909;&quot;&#65292;&#23545;&#27010;&#24565;&#36824;&#19981;&#26159;&#24456;&#26126;&#30830;&#65292;&#21487;&#33021;&#22312;&#20197;&#21518;&#30340;&#24037;&#20316;&#20013;&#25165;&#33021;&#24930;&#24930;&#29087;&#24713;&#12290;">&#38590;&#28857;&#65306;&#36807;&#31243;&#20013;&#21457;&#29616;&#36229;&#21442;&#25968;&#35843;&#20248;&#26159;&#27604;&#36739;&#38590;&#30340;&#65292;&#32780;&#19988;&#30001;&#20110;&#25968;&#25454;&#38598;&#24222;&#22823;&#65292;&#27599;&#27425;&#36816;&#34892;&#37117;&#35201;&#33457;&#39134;&#22909;&#38271;&#26102;&#38388;&#65292;&#22312;AWS&#37324;&#38754;&#26102;&#38388;&#24847;&#21619;&#30528;&#32654;&#20803;&#65307;&#20294;&#23436;&#25104;&#20102;&#31532;&#19968;&#29256;&#39033;&#30446;&#20197;&#21518;&#35273;&#24471;&#21508;&#20010;&#27169;&#22411;&#20043;&#38388;&#30340;&#20248;&#21183;&#21155;&#21183;&#21644;&#20391;&#37325;&#28857;&#20381;&#28982;&#19981;&#22826;&#28165;&#26224;&#26126;&#20102;&#65292;&#20197;&#19978;&#19977;&#20010;&#27169;&#22411;&#37117;&#26159;&#22312;&#24515;&#37324;&#29282;&#35760;&#30340;&#27169;&#22411;&#65292;&#33267;&#20110;&#21738;&#19968;&#20010;&#26356;&#36866;&#29992;&#20110;&#26412;&#27425;&#39033;&#30446;&#65292;&#33041;&#28023;&#37324;&#22987;&#32456;&#26159;"&#20108;&#20803;&#20998;&#31867;&#32447;&#24615;&#22238;&#24402;&#36739;&#22909;"&#65292;&#23545;&#27010;&#24565;&#36824;&#19981;&#26159;&#24456;&#26126;&#30830;&#65292;&#21487;&#33021;&#22312;&#20197;&#21518;&#30340;&#24037;&#20316;&#20013;&#25165;&#33021;&#24930;&#24930;&#29087;&#24713;&#12290;<a class="anchor-link" href="#&#38590;&#28857;&#65306;&#36807;&#31243;&#20013;&#21457;&#29616;&#36229;&#21442;&#25968;&#35843;&#20248;&#26159;&#27604;&#36739;&#38590;&#30340;&#65292;&#32780;&#19988;&#30001;&#20110;&#25968;&#25454;&#38598;&#24222;&#22823;&#65292;&#27599;&#27425;&#36816;&#34892;&#37117;&#35201;&#33457;&#39134;&#22909;&#38271;&#26102;&#38388;&#65292;&#22312;AWS&#37324;&#38754;&#26102;&#38388;&#24847;&#21619;&#30528;&#32654;&#20803;&#65307;&#20294;&#23436;&#25104;&#20102;&#31532;&#19968;&#29256;&#39033;&#30446;&#20197;&#21518;&#35273;&#24471;&#21508;&#20010;&#27169;&#22411;&#20043;&#38388;&#30340;&#20248;&#21183;&#21155;&#21183;&#21644;&#20391;&#37325;&#28857;&#20381;&#28982;&#19981;&#22826;&#28165;&#26224;&#26126;&#20102;&#65292;&#20197;&#19978;&#19977;&#20010;&#27169;&#22411;&#37117;&#26159;&#22312;&#24515;&#37324;&#29282;&#35760;&#30340;&#27169;&#22411;&#65292;&#33267;&#20110;&#21738;&#19968;&#20010;&#26356;&#36866;&#29992;&#20110;&#26412;&#27425;&#39033;&#30446;&#65292;&#33041;&#28023;&#37324;&#22987;&#32456;&#26159;&quot;&#20108;&#20803;&#20998;&#31867;&#32447;&#24615;&#22238;&#24402;&#36739;&#22909;&quot;&#65292;&#23545;&#27010;&#24565;&#36824;&#19981;&#26159;&#24456;&#26126;&#30830;&#65292;&#21487;&#33021;&#22312;&#20197;&#21518;&#30340;&#24037;&#20316;&#20013;&#25165;&#33021;&#24930;&#24930;&#29087;&#24713;&#12290;">&#182;</a></h6><h6 id="&#20195;&#30721;&#30340;&#25913;&#36827;&#65306;&#19968;&#24320;&#22987;&#27809;&#26377;&#20351;&#29992;&#32593;&#26684;&#25628;&#32034;&#23548;&#33268;&#23436;&#20840;&#20351;&#29992;&#21442;&#25968;&#40664;&#35748;&#20540;&#21435;&#21028;&#23450;&#27169;&#22411;&#30340;&#20248;&#21155;&#65292;&#36825;&#26159;&#19981;&#20934;&#30830;&#30340;&#65292;&#21518;&#26469;&#32463;&#36807;&#22810;&#27425;&#25628;&#32034;&#21518;&#24930;&#24930;&#25484;&#25569;&#20102;&#32593;&#26684;&#25628;&#32034;&#30340;&#29992;&#27861;(&#35838;&#31243;&#37324;&#38754;&#30340;&#24661;&#22312;&#19979;&#24858;&#31528;)&#65292;&#25165;&#24930;&#24930;&#36890;&#36807;&#32593;&#26684;&#25628;&#32034;&#26469;&#23545;&#36229;&#21442;&#25968;&#36827;&#34892;&#35843;&#20248;&#12290;">&#20195;&#30721;&#30340;&#25913;&#36827;&#65306;&#19968;&#24320;&#22987;&#27809;&#26377;&#20351;&#29992;&#32593;&#26684;&#25628;&#32034;&#23548;&#33268;&#23436;&#20840;&#20351;&#29992;&#21442;&#25968;&#40664;&#35748;&#20540;&#21435;&#21028;&#23450;&#27169;&#22411;&#30340;&#20248;&#21155;&#65292;&#36825;&#26159;&#19981;&#20934;&#30830;&#30340;&#65292;&#21518;&#26469;&#32463;&#36807;&#22810;&#27425;&#25628;&#32034;&#21518;&#24930;&#24930;&#25484;&#25569;&#20102;&#32593;&#26684;&#25628;&#32034;&#30340;&#29992;&#27861;(&#35838;&#31243;&#37324;&#38754;&#30340;&#24661;&#22312;&#19979;&#24858;&#31528;)&#65292;&#25165;&#24930;&#24930;&#36890;&#36807;&#32593;&#26684;&#25628;&#32034;&#26469;&#23545;&#36229;&#21442;&#25968;&#36827;&#34892;&#35843;&#20248;&#12290;<a class="anchor-link" href="#&#20195;&#30721;&#30340;&#25913;&#36827;&#65306;&#19968;&#24320;&#22987;&#27809;&#26377;&#20351;&#29992;&#32593;&#26684;&#25628;&#32034;&#23548;&#33268;&#23436;&#20840;&#20351;&#29992;&#21442;&#25968;&#40664;&#35748;&#20540;&#21435;&#21028;&#23450;&#27169;&#22411;&#30340;&#20248;&#21155;&#65292;&#36825;&#26159;&#19981;&#20934;&#30830;&#30340;&#65292;&#21518;&#26469;&#32463;&#36807;&#22810;&#27425;&#25628;&#32034;&#21518;&#24930;&#24930;&#25484;&#25569;&#20102;&#32593;&#26684;&#25628;&#32034;&#30340;&#29992;&#27861;(&#35838;&#31243;&#37324;&#38754;&#30340;&#24661;&#22312;&#19979;&#24858;&#31528;)&#65292;&#25165;&#24930;&#24930;&#36890;&#36807;&#32593;&#26684;&#25628;&#32034;&#26469;&#23545;&#36229;&#21442;&#25968;&#36827;&#34892;&#35843;&#20248;&#12290;">&#182;</a></h6>
+</div>
+</div>
 </div>
     </div>
   </div>
