@@ -29,4 +29,5 @@ Accuracy：准确率，该指标的高低能直接决定模型的完善程度，
 一开始没有使用网格搜索导致完全使用参数默认值去判定模型的优劣，这是不准确的，后来经过多次搜索后慢慢掌握了网格搜索的用法(课程里面的恕在下愚笨)，才慢慢通过网格搜索来对超参数进行调优。
 
 ### 参考文献
-[https://stackoverflow.com/questions/52498970/how-to-get-the-best-hyperparameter-value-after-crossvalidation-in-pyspark]()
+[https://stackoverflow.com/questions/52498970/how-to-get-the-best-hyperparameter-value-after-crossvalidation-in-pyspark]
+[]
