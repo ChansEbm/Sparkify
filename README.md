@@ -30,4 +30,6 @@ Accuracy：准确率，该指标的高低能直接决定模型的完善程度，
 
 ### 参考文献
 [https://stackoverflow.com/questions/52498970/how-to-get-the-best-hyperparameter-value-after-crossvalidation-in-pyspark]
-[]
+[https://spark.apache.org/docs/2.0.1/api/java/org/apache/spark/ml/evaluation/BinaryClassificationEvaluator.html]
+[https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.evaluation.BinaryClassificationMetrics]
+[https://stackoverflow.com/questions/37707305/pyspark-multiple-conditions-in-when-clause]
